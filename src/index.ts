@@ -1,4 +1,4 @@
-import RingCentral from '@rc-ex/core';
+import RingCentral from "@rc-ex/core";
 
 const rc = new RingCentral({
   server: process.env.RINGCENTRAL_SERVER_URL,
@@ -8,9 +8,11 @@ const rc = new RingCentral({
 
 (async () => {
   await rc.authorize({
-    username: process.env.RINGCENTRAL_USERNAME!,
-    extension: process.env.RINGCENTRAL_EXTENSION,
-    password: process.env.RINGCENTRAL_PASSWORD!,
+    jwt: process.env.RINGCENTRAL_JWT_TOKEN!,
   });
-  await rc.restapi().glip().groups('111');
+  const r = await rc.get("/restapi/v1.0/glip/groups");
+  const groupId =
+    (r.data as any).records.filter((g: any) => g.type === "Team")[0].id;
+  const r2 = await rc.get("/restapi/v1.0/glip/groups/" + groupId);
+  console.log(r2.data);
 })();

@@ -1,16 +1,17 @@
 {
   "license": "MIT",
   "scripts": {
-    "test": "ts-node src/index.ts"
+    "test": "ts-node -r dotenv-override-true/config src/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^16.10.2",
-    "gts": "^3.1.0",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.3",
-    "yarn-upgrade-all": "^0.5.4"
+    "@types/node": "^22.15.3",
+    "dotenv-override-true": "^6.2.2",
+    "gts": "^6.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "yarn-upgrade-all": "^0.7.5"
   },
   "dependencies": {
-    "@rc-ex/core": "^0.10.2"
+    "@rc-ex/core": "^1.6.17"
   }
 }
